@@ -1,0 +1,970 @@
+Build started at 2024-03-14T17:31:18.253749
+Main binary: /usr/bin/python3
+Build Options: -Ddocdir=/usr/local/share/doc -Dqemu_firmwarepath=/usr/local/share/qemu-firmware -Dqemu_suffix=qemu -Doptimization=2 -Ddebug=false -Dwerror=false -Dstrip=true -Db_pie=true -Db_coverage=false -Db_lto=false -Dcfi=false -Dcfi_debug=false -Dmalloc=system -Dmalloc_trim=auto -Dsparse=auto -Dkvm=auto -Dhax=auto -Dwhpx=auto -Dhvf=auto -Dxen=disabled -Dxen_pci_passthrough=disabled -Dtcg=enabled -Dcocoa=auto -Dgtk=disabled -Dmpath=auto -Dsdl=disabled -Dsdl_image=auto -Dvnc=disabled -Dvnc_sasl=disabled -Dvnc_jpeg=disabled -Dvnc_png=disabled -Dgettext=auto -Dxkbcommon=auto -Du2f=auto -Dvirtiofsd=auto -Dcapstone=auto -Dslirp=auto -Dfdt=disabled -Dbrlapi=disabled -Dcurl=disabled -Dglusterfs=disabled -Dbzip2=disabled -Dlibiscsi=disabled -Dlibnfs=disabled -Diconv=disabled -Dcurses=disabled -Dlibudev=auto -Drbd=disabled -Dlzo=disabled -Dsnappy=disabled -Dlzfse=auto -Dzstd=auto -Dseccomp=disabled -Dvirtfs=disabled -Dcap_ng=disabled -Dattr=auto -Ddefault_devices=false -Ddocs=disabled -Dsphinx_build= -Dinstall_blobs=false -Dvhost_user_blk_server=auto -Dmultiprocess=auto -Dfuse=auto -Dfuse_lseek=auto -Dguest_agent_msi=auto -Dtcg_interpreter=false -Dprefix=/usr/local -Dbindir=/usr/local/bin -Ddatadir=/usr/local/share -Dincludedir=/usr/local/include -Dlibdir=/usr/local/lib -Dlibexecdir=/usr/local/libexec -Dlocaledir=/usr/local/share/locale -Dlocalstatedir=/usr/local/var -Dmandir=/usr/local/share/man -Dsysconfdir=/usr/local/etc --native-file=config-meson.cross
+Python system: Linux
+The Meson build system
+Version: 1.0.1
+Source dir: /home/choi/AFLplusplus_select/qemu_mode/qemuafl
+Build dir: /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build
+Build type: native build
+WARNING: You should add the boolean check kwarg to the run_command call.
+         It currently defaults to false,
+         but it will default to true in future releases of meson.
+         See also: https://github.com/mesonbuild/meson/issues/9300
+Running command: /usr/bin/head /home/choi/AFLplusplus_select/qemu_mode/qemuafl/VERSION
+--- stdout ---
+5.2.50
+
+--- stderr ---
+
+
+Project name: qemu
+Project version: 5.2.50
+-----
+Detecting compiler via: cc --version
+compiler returned <Popen: returncode: 0 args: ['cc', '--version']>
+compiler stdout:
+cc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+Copyright (C) 2019 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+compiler stderr:
+
+Running command: cc -E -dM -
+-----
+Detecting linker via: cc -Wl,--version
+linker returned <Popen: returncode: 0 args: ['cc', '-Wl,--version']>
+linker stdout:
+GNU ld (GNU Binutils for Debian) 2.40
+Copyright (C) 2023 Free Software Foundation, Inc.
+This program is free software; you may redistribute it under the terms of
+the GNU General Public License version 3 or (at your option) a later version.
+This program has absolutely no warranty.
+
+linker stderr:
+collect2 version 9.4.0
+/usr/bin/ld -plugin /usr/lib/gcc/x86_64-linux-gnu/9/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper -plugin-opt=-fresolution=/tmp/ccaCaOWP.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/9/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/9 -L/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/9/../../.. --version -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/9/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
+
+Sanity testing C compiler: cc
+Is cross compiler: False.
+Sanity check compiler command line: cc sanitycheckc.c -o sanitycheckc.exe -D_FILE_OFFSET_BITS=64
+Sanity check compile stdout:
+
+-----
+Sanity check compile stderr:
+
+-----
+Running test binary command:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/sanitycheckc.exe
+C compiler for the host machine: cc (gcc 9.4.0 "cc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0")
+C linker for the host machine: cc ld.bfd 2.40
+-----
+Detecting compiler via: cc --version
+compiler returned <Popen: returncode: 0 args: ['cc', '--version']>
+compiler stdout:
+cc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+Copyright (C) 2019 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+compiler stderr:
+
+Running command: cc -E -dM -
+-----
+Detecting linker via: cc -Wl,--version
+linker returned <Popen: returncode: 0 args: ['cc', '-Wl,--version']>
+linker stdout:
+GNU ld (GNU Binutils for Debian) 2.40
+Copyright (C) 2023 Free Software Foundation, Inc.
+This program is free software; you may redistribute it under the terms of
+the GNU General Public License version 3 or (at your option) a later version.
+This program has absolutely no warranty.
+
+linker stderr:
+collect2 version 9.4.0
+/usr/bin/ld -plugin /usr/lib/gcc/x86_64-linux-gnu/9/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper -plugin-opt=-fresolution=/tmp/ccKpQavs.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/9/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/9 -L/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/9/../../.. --version -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/9/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
+
+Sanity testing C compiler: cc
+Is cross compiler: False.
+Sanity check compiler command line: cc sanitycheckc.c -o sanitycheckc.exe -D_FILE_OFFSET_BITS=64
+Sanity check compile stdout:
+
+-----
+Sanity check compile stderr:
+
+-----
+Running test binary command:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/sanitycheckc.exe
+C compiler for the build machine: cc (gcc 9.4.0 "cc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0")
+C linker for the build machine: cc ld.bfd 2.40
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Host machine cpu family: x86_64
+Host machine cpu: x86_64
+Target machine cpu family: x86_64
+Target machine cpu: x86_64
+Program sh found: YES (/usr/bin/sh)
+Program python3 found: YES (/usr/bin/python3)
+Program bzip2 found: YES (/usr/bin/bzip2)
+-----
+Detecting compiler via: c++ --version
+compiler returned <Popen: returncode: 0 args: ['c++', '--version']>
+compiler stdout:
+c++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+Copyright (C) 2019 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+compiler stderr:
+
+Running command: c++ -E -dM -
+-----
+Detecting linker via: c++ -Wl,--version
+linker returned <Popen: returncode: 0 args: ['c++', '-Wl,--version']>
+linker stdout:
+GNU ld (GNU Binutils for Debian) 2.40
+Copyright (C) 2023 Free Software Foundation, Inc.
+This program is free software; you may redistribute it under the terms of
+the GNU General Public License version 3 or (at your option) a later version.
+This program has absolutely no warranty.
+
+linker stderr:
+collect2 version 9.4.0
+/usr/bin/ld -plugin /usr/lib/gcc/x86_64-linux-gnu/9/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper -plugin-opt=-fresolution=/tmp/ccx1VSJ2.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/9/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/9 -L/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/9/../../.. --version -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/9/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
+
+Sanity testing C++ compiler: c++
+Is cross compiler: False.
+Sanity check compiler command line: c++ sanitycheckcpp.cc -o sanitycheckcpp.exe -D_FILE_OFFSET_BITS=64
+Sanity check compile stdout:
+
+-----
+Sanity check compile stderr:
+
+-----
+Running test binary command:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/sanitycheckcpp.exe
+C++ compiler for the host machine: c++ (gcc 9.4.0 "c++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0")
+C++ linker for the host machine: c++ ld.bfd 2.40
+Program cgcc found: NO
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp507r91uj
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp507r91uj/testfile.c -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp507r91uj/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lm -Wl,--end-group -Wl,--allow-shlib-undefined 
+
+Code:
+ int main(void) { return 0; }
+
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Library m found: YES
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpnx2sionu
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpnx2sionu/testfile.c -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpnx2sionu/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lutil -Wl,--end-group -Wl,--allow-shlib-undefined 
+
+Code:
+ int main(void) { return 0; }
+
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Library util found: YES
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpua7z5f5e
+Command line:  c++ /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpua7z5f5e/testfile.cpp -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpua7z5f5e/output.exe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive -framework Hypervisor 
+
+Code:
+ int main(void) { return 0; }
+Compiler stdout:
+ 
+Compiler stderr:
+ c++: error: Hypervisor: No such file or directory
+c++: error: unrecognized command line option '-framework'
+
+Run-time dependency appleframeworks found: NO (tried framework)
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpstsf9_0b
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpstsf9_0b/testfile.c -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpstsf9_0b/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -laio -Wl,--end-group -Wl,--allow-shlib-undefined 
+
+Code:
+ int main(void) { return 0; }
+
+Compiler stdout:
+ 
+Compiler stderr:
+ /usr/bin/ld: cannot find -laio: No such file or directory
+collect2: error: ld returned 1 exit status
+
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpofzqdg1h
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpofzqdg1h/testfile.c -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpofzqdg1h/output.exe -D_FILE_OFFSET_BITS=64 -O0 
+
+Code:
+ #include<stdio.h>
+        
+        int main(void) {
+            printf("%ld\n", (long)(sizeof(void *)));
+            return 0;
+        }
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Program stdout:
+
+8
+
+Program stderr:
+
+
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp1t9_ml_n
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp1t9_ml_n/testfile.c -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp1t9_ml_n/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+
+Code:
+ 
+Compiler stdout:
+ install: /usr/lib/gcc/x86_64-linux-gnu/9/
+programs: =/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/bin/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/bin/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/bin/
+libraries: =/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib/:/lib/x86_64-linux-gnu/9/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/9/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../:/lib/:/usr/lib/
+
+Compiler stderr:
+ 
+Library aio found: NO
+Pkg-config binary for 1 is not cached.
+Pkg-config binary for 1 specified from cross file, native file, or env var as ['pkg-config']
+Found pkg-config: /usr/bin/pkg-config (0.29.1)
+Determining dependency 'zlib' with pkg-config executable '/usr/bin/pkg-config'
+env[PKG_CONFIG_PATH]: 
+Called `/usr/bin/pkg-config --modversion zlib` -> 0
+stdout:
+1.2.13
+-----------
+env[PKG_CONFIG_PATH]: 
+Called `/usr/bin/pkg-config --cflags zlib` -> 0
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+env[PKG_CONFIG_PATH]: 
+Called `/usr/bin/pkg-config --libs zlib` -> 0
+stdout:
+-L/usr/lib/x86_64-linux-gnu -lz
+-----------
+env[PKG_CONFIG_PATH]: 
+Called `/usr/bin/pkg-config --libs zlib` -> 0
+stdout:
+-lz
+-----------
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpanqszz55
+Command line:  c++ /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpanqszz55/testfile.cpp -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpanqszz55/output.exe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive 
+
+Code:
+ #include<stdio.h>
+        
+        int main(void) {
+            printf("%ld\n", (long)(sizeof(void *)));
+            return 0;
+        }
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Program stdout:
+
+8
+
+Program stderr:
+
+
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpqk0m81_i
+Command line:  c++ /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpqk0m81_i/testfile.cpp -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpqk0m81_i/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -fpermissive --print-search-dirs 
+
+Code:
+ 
+Compiler stdout:
+ install: /usr/lib/gcc/x86_64-linux-gnu/9/
+programs: =/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/bin/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/bin/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/bin/
+libraries: =/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib/:/lib/x86_64-linux-gnu/9/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/9/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../:/lib/:/usr/lib/
+
+Compiler stderr:
+ 
+Run-time dependency zlib found: YES 1.2.13
+Dependency libnfs skipped: feature libnfs disabled
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp2ih2j8rl
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp2ih2j8rl/testfile.c -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp2ih2j8rl/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu99 
+
+Code:
+ 
+  #include <stddef.h>
+  #include <sys/types.h>
+  #ifdef CONFIG_LIBATTR
+  #include <attr/xattr.h>
+  #else
+  #include <sys/xattr.h>
+  #endif
+  int main(void) { getxattr(NULL, NULL, NULL, 0); setxattr(NULL, NULL, NULL, 0, 0); return 0; }
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp7r30ppn1
+Command line:  c++ /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp7r30ppn1/testfile.cpp -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp7r30ppn1/output.exe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive -framework Cocoa 
+
+Code:
+ int main(void) { return 0; }
+Compiler stdout:
+ 
+Compiler stderr:
+ c++: error: Cocoa: No such file or directory
+c++: error: unrecognized command line option '-framework'
+
+Run-time dependency appleframeworks found: NO (tried framework)
+Dependency libseccomp skipped: feature seccomp disabled
+Library cap-ng skipped: feature cap_ng disabled
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp5mhpwh3m
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp5mhpwh3m/testfile.c -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp5mhpwh3m/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lrt -Wl,--end-group -Wl,--allow-shlib-undefined 
+
+Code:
+ int main(void) { return 0; }
+
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Library rt found: YES
+Dependency libiscsi skipped: feature libiscsi disabled
+Dependency libcurl skipped: feature curl disabled
+Library brlapi skipped: feature brlapi disabled
+Dependency sdl2 skipped: feature sdl disabled
+Library rados skipped: feature rbd disabled
+Library rbd skipped: feature rbd disabled
+Dependency glusterfs-api skipped: feature glusterfs disabled
+Library bz2 skipped: feature bzip2 disabled
+Dependency gtk+-3.0 skipped: feature gtk disabled
+Library snappy skipped: feature snappy disabled
+Library lzo2 skipped: feature lzo disabled
+Pkg-config binary for 1 is cached.
+Determining dependency 'libkeyutils' with pkg-config executable '/usr/bin/pkg-config'
+env[PKG_CONFIG_PATH]: 
+Called `/usr/bin/pkg-config --modversion libkeyutils` -> 1
+stderr:
+Package libkeyutils was not found in the pkg-config search path.
+Perhaps you should add the directory containing `libkeyutils.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'libkeyutils' found
+-----------
+Run-time dependency libkeyutils found: NO (tried pkgconfig)
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp2dgrr4k1
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp2dgrr4k1/testfile.c -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp2dgrr4k1/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu99 
+
+Code:
+ 
+        #define gettid meson_disable_define_of_gettid
+        
+        #include <limits.h>
+        #undef gettid
+        
+        #ifdef __cplusplus
+        extern "C"
+        #endif
+        char gettid (void);
+        
+        #if defined __stub_gettid || defined __stub___gettid
+        fail fail fail this function is not going to work
+        #endif
+        
+        int main(void) {
+          return gettid ();
+        }
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Checking for function "gettid" : YES 
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpcv7whlj1
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpcv7whlj1/testfile.c -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpcv7whlj1/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu99 
+
+Code:
+ #include <malloc.h>
+                int main(void) { malloc_trim(0); return 0; }
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp0yez3hbv
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp0yez3hbv/testfile.c -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp0yez3hbv/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu99 
+
+Code:
+ 
+  #ifndef _GNU_SOURCE
+  #define _GNU_SOURCE
+  #endif
+  #include <sys/stat.h>
+  int main(void) {
+    struct statx statxbuf;
+    statx(0, "", 0, STATX_BASIC_STATS, &statxbuf);
+    return 0;
+  }
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Pkg-config binary for 1 is cached.
+Determining dependency 'fuse3' with pkg-config executable '/usr/bin/pkg-config'
+env[PKG_CONFIG_PATH]: 
+Called `/usr/bin/pkg-config --modversion fuse3` -> 1
+stderr:
+Package fuse3 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `fuse3.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'fuse3' found
+-----------
+Run-time dependency fuse3 found: NO (tried pkgconfig)
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmptvxt71ij
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmptvxt71ij/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu99 
+
+Code:
+ 
+        #ifdef __has_include
+         #if !__has_include("linux/btrfs.h")
+          #error "Header 'linux/btrfs.h' could not be found"
+         #endif
+        #else
+         #include <linux/btrfs.h>
+        #endif
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Has header "linux/btrfs.h" : YES 
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp137po8w9
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp137po8w9/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu99 
+
+Code:
+ 
+        #ifdef __has_include
+         #if !__has_include("libdrm/drm.h")
+          #error "Header 'libdrm/drm.h' could not be found"
+         #endif
+        #else
+         #include <libdrm/drm.h>
+        #endif
+Compiler stdout:
+ 
+Compiler stderr:
+ /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp137po8w9/testfile.c:4:12: error: #error "Header 'libdrm/drm.h' could not be found"
+    4 |           #error "Header 'libdrm/drm.h' could not be found"
+      |            ^~~~~
+
+Has header "libdrm/drm.h" : NO 
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmprqd0dd_o
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmprqd0dd_o/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu99 
+
+Code:
+ 
+        #ifdef __has_include
+         #if !__has_include("pty.h")
+          #error "Header 'pty.h' could not be found"
+         #endif
+        #else
+         #include <pty.h>
+        #endif
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Has header "pty.h" : YES 
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpkjy5fa7n
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpkjy5fa7n/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu99 
+
+Code:
+ 
+        #ifdef __has_include
+         #if !__has_include("sys/ioccom.h")
+          #error "Header 'sys/ioccom.h' could not be found"
+         #endif
+        #else
+         #include <sys/ioccom.h>
+        #endif
+Compiler stdout:
+ 
+Compiler stderr:
+ /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpkjy5fa7n/testfile.c:4:12: error: #error "Header 'sys/ioccom.h' could not be found"
+    4 |           #error "Header 'sys/ioccom.h' could not be found"
+      |            ^~~~~
+
+Has header "sys/ioccom.h" : NO 
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp9bk63mre
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp9bk63mre/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu99 
+
+Code:
+ 
+        #ifdef __has_include
+         #if !__has_include("sys/kcov.h")
+          #error "Header 'sys/kcov.h' could not be found"
+         #endif
+        #else
+         #include <sys/kcov.h>
+        #endif
+Compiler stdout:
+ 
+Compiler stderr:
+ /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp9bk63mre/testfile.c:4:12: error: #error "Header 'sys/kcov.h' could not be found"
+    4 |           #error "Header 'sys/kcov.h' could not be found"
+      |            ^~~~~
+
+Has header "sys/kcov.h" : NO 
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpobt3x215
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpobt3x215/testfile.c -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpobt3x215/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu99 
+
+Code:
+ #include <stdlib.h>
+#include <limits.h>
+
+        #if defined __stub_system || defined __stub___system
+        fail fail fail this function is not going to work
+        #endif
+        
+int main(void) {
+            void *a = (void*) &system;
+            long long b = (long long) a;
+            return (int) b;
+        }
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Checking for function "system" : YES 
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp_j5fcqim
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp_j5fcqim/testfile.c -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmp_j5fcqim/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu99 
+
+Code:
+ 
+        #include <sys/mount.h>
+        int main(void) {
+            /* If it's not defined as a macro, try to use as a symbol */
+            #ifndef FSCONFIG_SET_FLAG
+                FSCONFIG_SET_FLAG;
+            #endif
+            return 0;
+        }
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Header "sys/mount.h" has symbol "FSCONFIG_SET_FLAG" : YES 
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpp4jqi_7g
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpp4jqi_7g/testfile.c -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpp4jqi_7g/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu99 
+
+Code:
+ #include <sys/uio.h>
+#include <limits.h>
+
+        #if defined __stub_preadv || defined __stub___preadv
+        fail fail fail this function is not going to work
+        #endif
+        
+int main(void) {
+            void *a = (void*) &preadv;
+            long long b = (long long) a;
+            return (int) b;
+        }
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Checking for function "preadv" : YES 
+Program scripts/minikconf.py found: YES (/usr/bin/python3 /home/choi/AFLplusplus_select/qemu_mode/qemuafl/scripts/minikconf.py)
+Configuring i386-linux-user-config-target.h using configuration
+Pkg-config binary for 1 is cached.
+Determining dependency 'capstone' with pkg-config executable '/usr/bin/pkg-config'
+env[PKG_CONFIG_PATH]: 
+Called `/usr/bin/pkg-config --modversion capstone` -> 1
+stderr:
+Package capstone was not found in the pkg-config search path.
+Perhaps you should add the directory containing `capstone.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'capstone' found
+-----------
+Run-time dependency capstone found: NO (tried pkgconfig)
+Configuring capstone-defs.h using configuration
+Configuring config-host.h using configuration
+Program scripts/hxtool found: YES (/home/choi/AFLplusplus_select/qemu_mode/qemuafl/scripts/hxtool)
+Program scripts/shaderinclude.pl found: YES (/usr/bin/env perl /home/choi/AFLplusplus_select/qemu_mode/qemuafl/scripts/shaderinclude.pl)
+Program scripts/qapi-gen.py found: YES (/usr/bin/python3 /home/choi/AFLplusplus_select/qemu_mode/qemuafl/scripts/qapi-gen.py)
+Program scripts/qemu-version.sh found: YES (/home/choi/AFLplusplus_select/qemu_mode/qemuafl/scripts/qemu-version.sh)
+Run-time dependency threads found: YES
+Program keycodemapdb/tools/keymap-gen found: YES (/home/choi/AFLplusplus_select/qemu_mode/qemuafl/ui/keycodemapdb/tools/keymap-gen)
+Program scripts/decodetree.py found: YES (/usr/bin/python3 /home/choi/AFLplusplus_select/qemu_mode/qemuafl/scripts/decodetree.py)
+Program nm found: YES
+Program scripts/undefsym.py found: YES (/usr/bin/python3 /home/choi/AFLplusplus_select/qemu_mode/qemuafl/scripts/undefsym.py)
+Program scripts/feature_to_c.sh found: YES (/bin/sh /home/choi/AFLplusplus_select/qemu_mode/qemuafl/scripts/feature_to_c.sh)
+Program qemu-keymap found: NO
+Program sphinx-build-3 sphinx-build skipped: feature docs disabled
+Program python3 found: YES (/usr/bin/python3)
+Adding test "check-block-qdict"
+Adding test "check-qdict"
+Adding test "check-qnum"
+Adding test "check-qstring"
+Adding test "check-qlist"
+Adding test "check-qnull"
+Adding test "check-qobject"
+Adding test "check-qjson"
+Adding test "check-qlit"
+Adding test "test-qobject-output-visitor"
+Adding test "test-clone-visitor"
+Adding test "test-qobject-input-visitor"
+Adding test "test-string-input-visitor"
+Adding test "test-string-output-visitor"
+Adding test "test-opts-visitor"
+Adding test "test-visitor-serialization"
+Adding test "test-bitmap"
+Adding test "test-x86-cpuid"
+Adding test "test-cutils"
+Adding test "test-shift128"
+Adding test "test-mul64"
+Adding test "test-int128"
+Adding test "rcutorture"
+Adding test "test-rcu-list"
+Adding test "test-rcu-simpleq"
+Adding test "test-rcu-tailq"
+Adding test "test-rcu-slist"
+Adding test "test-qdist"
+Adding test "test-qht"
+Adding test "test-bitops"
+Adding test "test-bitcnt"
+Adding test "test-qgraph"
+Adding test "check-qom-interface"
+Adding test "check-qom-proplist"
+Adding test "test-qemu-opts"
+Adding test "test-keyval"
+Adding test "test-logging"
+Adding test "test-uuid"
+Adding test "ptimer-test"
+Adding test "test-qapi-util"
+Adding test "decodetree"
+Adding test "fp-test-float-to-float"
+Adding test "fp-test-int-to-float"
+Adding test "fp-test-uint-to-float"
+Adding test "fp-test-float-to-int"
+Adding test "fp-test-float-to-uint"
+Adding test "fp-test-round-to-integer"
+Adding test "fp-test-eq_signaling"
+Adding test "fp-test-le"
+Adding test "fp-test-le_quiet"
+Adding test "fp-test-lt_quiet"
+Adding test "fp-test-add"
+Adding test "fp-test-sub"
+Adding test "fp-test-mul"
+Adding test "fp-test-div"
+Adding test "fp-test-rem"
+Adding test "fp-test-sqrt"
+Adding test "fp-test-mulAdd"
+Adding test "QAPI schema regression tests"
+Program diff found: YES (/usr/bin/diff)
+Program dbus-daemon found: YES (/usr/bin/dbus-daemon)
+Program initrd-stress.sh found: YES (/home/choi/AFLplusplus_select/qemu_mode/qemuafl/tests/migration/initrd-stress.sh)
+Build targets in project: 169
+NOTICE: Future-deprecated features used:
+ * 0.56.0: {'gui_app arg in executable', 'meson.source_root'}
+
+qemu 5.2.50
+
+  Directories
+    Install prefix               : /usr/local
+    BIOS directory               : share/qemu
+    firmware path                : /usr/local/share/qemu-firmware
+    binary directory             : bin
+    library directory            : lib
+    module directory             : lib/qemu
+    libexec directory            : libexec
+    include directory            : include
+    config directory             : /usr/local/etc
+    local state directory        : /usr/local/var
+    Manual directory             : share/man
+    Doc directory                : /usr/local/share/doc
+    Build directory              : /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build
+    Source path                  : /home/choi/AFLplusplus_select/qemu_mode/qemuafl
+    GIT submodules               : ui/keycodemapdb tests/fp/berkeley-testfloat-3 tests/fp/berkeley-softfloat-3 capstone slirp
+
+  Host binaries
+    git                          : git
+    make                         : make
+    python                       : /usr/bin/python3 (version: 3.11)
+    sphinx-build                 : NO
+    gdb                          : /usr/bin/gdb
+    genisoimage                  : 
+
+  Configurable features
+    Documentation                : NO
+    system-mode emulation        : NO
+    user-mode emulation          : YES
+    block layer                  : NO
+    Install blobs                : NO
+    module support               : NO
+    plugin support               : NO
+    fuzzing support              : NO
+    Trace backends               : log
+    QOM debugging                : NO
+    vhost-kernel support         : NO
+    vhost-net support            : NO
+    vhost-crypto support         : NO
+    vhost-scsi support           : NO
+    vhost-vsock support          : NO
+    vhost-user support           : NO
+    vhost-user-blk server support: NO
+    vhost-user-fs support        : NO
+    vhost-vdpa support           : NO
+    build guest agent            : NO
+
+  Compilation
+    host CPU                     : x86_64
+    host endianness              : little
+    C compiler                   : cc
+    Host C compiler              : cc
+    C++ compiler                 : c++
+    ARFLAGS                      : rv
+    CFLAGS                       : -O2
+    CXXFLAGS                     : -O2
+    QEMU_CFLAGS                  : -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -m64 -mcx16 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv  -Wold-style-declaration -Wold-style-definition -Wtype-limits -Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers -Wempty-body -Wnested-externs -Wendif-labels -Wexpansion-to-defined -Wimplicit-fallthrough=2 -Wno-missing-include-dirs -Wno-shift-negative-value -Wno-psabi -Wno-unused-function
+    QEMU_LDFLAGS                 : -Wl,--warn-common -Wl,-z,relro -Wl,-z,now -m64 -ldl
+    profiler                     : NO
+    link-time optimization (LTO) : NO
+    PIE                          : YES
+    static build                 : NO
+    malloc trim support          : YES
+    membarrier                   : NO
+    preadv support               : YES
+    fdatasync                    : YES
+    madvise                      : YES
+    posix_madvise                : YES
+    posix_memalign               : YES
+    debug stack usage            : NO
+    mutex debugging              : NO
+    memory allocator             : system
+    avx2 optimization            : YES
+    avx512f optimization         : NO
+    gprof enabled                : NO
+    gcov                         : NO
+    thread sanitizer             : NO
+    CFI support                  : NO
+    strip binaries               : YES
+    sparse                       : NO
+    mingw32 support              : NO
+
+  Targets and accelerators
+    TCG support                  : YES
+    TCG backend                  : native (x86_64)
+    TCG debug enabled            : NO
+    target list                  : i386-linux-user
+
+  Block layer support
+    coroutine backend            : ucontext
+    coroutine pool               : YES
+
+  Crypto
+    TLS priority                 : "NORMAL"
+    GNUTLS support               : NO
+    libgcrypt                    : NO
+    nettle                       : NO
+    crypto afalg                 : NO
+    rng-none                     : NO
+    Linux keyring                : YES
+
+  Dependencies
+    SDL support                  : NO
+    SDL image support            : NO
+    GTK support                  : NO
+    pixman                       : NO
+    VTE support                  : NO
+    slirp support                : NO
+    libtasn1                     : NO
+    PAM                          : NO
+    iconv support                : NO
+    curses support               : NO
+    virgl support                : NO
+    curl support                 : NO
+    Multipath support            : NO
+    VNC support                  : NO
+    brlapi support               : NO
+    vde support                  : NO
+    netmap support               : NO
+    Linux AIO support            : NO
+    Linux io_uring support       : NO
+    ATTR/XATTR support           : YES
+    RDMA support                 : NO
+    PVRDMA support               : NO
+    fdt support                  : NO
+    libcap-ng support            : NO
+    spice support                : NO
+    rbd support                  : NO
+    xfsctl support               : NO
+    smartcard support            : NO
+    U2F support                  : NO
+    libusb                       : NO
+    usb net redir                : NO
+    OpenGL support               : NO
+    OpenGL dmabufs               : NO
+    libiscsi support             : NO
+    libnfs support               : NO
+    seccomp support              : NO
+    GlusterFS support            : NO
+    TPM support                  : NO
+    libssh support               : NO
+    lzo support                  : NO
+    snappy support               : NO
+    bzip2 support                : NO
+    lzfse support                : NO
+    zstd support                 : NO
+    NUMA host support            : NO
+    libxml2                      : YES
+    capstone                     : internal
+    libpmem support              : NO
+    libdaxctl support            : NO
+    libudev                      : NO
+    FUSE lseek                   : NO
+
+  User defined options
+    Native files                 : config-meson.cross
+    bindir                       : /usr/local/bin
+    datadir                      : /usr/local/share
+    debug                        : false
+    includedir                   : /usr/local/include
+    libdir                       : /usr/local/lib
+    libexecdir                   : /usr/local/libexec
+    localedir                    : /usr/local/share/locale
+    localstatedir                : /usr/local/var
+    mandir                       : /usr/local/share/man
+    optimization                 : 2
+    prefix                       : /usr/local
+    strip                        : true
+    sysconfdir                   : /usr/local/etc
+    werror                       : false
+    b_coverage                   : false
+    b_lto                        : false
+    b_pie                        : true
+    attr                         : auto
+    brlapi                       : disabled
+    bzip2                        : disabled
+    cap_ng                       : disabled
+    capstone                     : auto
+    cfi                          : false
+    cfi_debug                    : false
+    cocoa                        : auto
+    curl                         : disabled
+    curses                       : disabled
+    default_devices              : false
+    docdir                       : /usr/local/share/doc
+    docs                         : disabled
+    fdt                          : disabled
+    fuse                         : auto
+    fuse_lseek                   : auto
+    gettext                      : auto
+    glusterfs                    : disabled
+    gtk                          : disabled
+    guest_agent_msi              : auto
+    hax                          : auto
+    hvf                          : auto
+    iconv                        : disabled
+    install_blobs                : false
+    kvm                          : auto
+    libiscsi                     : disabled
+    libnfs                       : disabled
+    libudev                      : auto
+    lzfse                        : auto
+    lzo                          : disabled
+    malloc                       : system
+    malloc_trim                  : auto
+    mpath                        : auto
+    multiprocess                 : auto
+    qemu_firmwarepath            : /usr/local/share/qemu-firmware
+    qemu_suffix                  : qemu
+    rbd                          : disabled
+    sdl                          : disabled
+    sdl_image                    : auto
+    seccomp                      : disabled
+    slirp                        : auto
+    snappy                       : disabled
+    sparse                       : auto
+    sphinx_build                 : 
+    tcg                          : enabled
+    tcg_interpreter              : false
+    u2f                          : auto
+    vhost_user_blk_server        : auto
+    virtfs                       : disabled
+    virtiofsd                    : auto
+    vnc                          : disabled
+    vnc_jpeg                     : disabled
+    vnc_png                      : disabled
+    vnc_sasl                     : disabled
+    whpx                         : auto
+    xen                          : disabled
+    xen_pci_passthrough          : disabled
+    xkbcommon                    : auto
+    zstd                         : auto
+
+Found ninja-1.11.1 at /usr/bin/ninja
+Running compile:
+Working directory:  /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpquf_3vnw
+Command line:  cc /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpquf_3vnw/testfile.c -o /home/choi/AFLplusplus_select/qemu_mode/qemuafl/build/meson-private/tmpquf_3vnw/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+
+Code:
+ 
+Compiler stdout:
+ install: /usr/lib/gcc/x86_64-linux-gnu/9/
+programs: =/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/bin/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/bin/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/bin/
+libraries: =/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib/:/lib/x86_64-linux-gnu/9/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/9/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../:/lib/:/usr/lib/
+
+Compiler stderr:
+ 
+Failed to guess install tag for /usr/local/share/qemu/trace-events-all
+Failed to guess install tag for /usr/local/share/qemu/keymaps/ar
+Failed to guess install tag for /usr/local/share/qemu/keymaps/bepo
+Failed to guess install tag for /usr/local/share/qemu/keymaps/cz
+Failed to guess install tag for /usr/local/share/qemu/keymaps/da
+Failed to guess install tag for /usr/local/share/qemu/keymaps/de
+Failed to guess install tag for /usr/local/share/qemu/keymaps/de-ch
+Failed to guess install tag for /usr/local/share/qemu/keymaps/en-gb
+Failed to guess install tag for /usr/local/share/qemu/keymaps/en-us
+Failed to guess install tag for /usr/local/share/qemu/keymaps/es
+Failed to guess install tag for /usr/local/share/qemu/keymaps/et
+Failed to guess install tag for /usr/local/share/qemu/keymaps/fi
+Failed to guess install tag for /usr/local/share/qemu/keymaps/fo
+Failed to guess install tag for /usr/local/share/qemu/keymaps/fr
+Failed to guess install tag for /usr/local/share/qemu/keymaps/fr-be
+Failed to guess install tag for /usr/local/share/qemu/keymaps/fr-ca
+Failed to guess install tag for /usr/local/share/qemu/keymaps/fr-ch
+Failed to guess install tag for /usr/local/share/qemu/keymaps/hr
+Failed to guess install tag for /usr/local/share/qemu/keymaps/hu
+Failed to guess install tag for /usr/local/share/qemu/keymaps/is
+Failed to guess install tag for /usr/local/share/qemu/keymaps/it
+Failed to guess install tag for /usr/local/share/qemu/keymaps/ja
+Failed to guess install tag for /usr/local/share/qemu/keymaps/lt
+Failed to guess install tag for /usr/local/share/qemu/keymaps/lv
+Failed to guess install tag for /usr/local/share/qemu/keymaps/mk
+Failed to guess install tag for /usr/local/share/qemu/keymaps/nl
+Failed to guess install tag for /usr/local/share/qemu/keymaps/no
+Failed to guess install tag for /usr/local/share/qemu/keymaps/pl
+Failed to guess install tag for /usr/local/share/qemu/keymaps/pt
+Failed to guess install tag for /usr/local/share/qemu/keymaps/pt-br
+Failed to guess install tag for /usr/local/share/qemu/keymaps/ru
+Failed to guess install tag for /usr/local/share/qemu/keymaps/th
+Failed to guess install tag for /usr/local/share/qemu/keymaps/tr
+Failed to guess install tag for /usr/local/share/qemu/keymaps/sl
+Failed to guess install tag for /usr/local/share/qemu/keymaps/sv
